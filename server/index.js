@@ -12,12 +12,12 @@ import userRoutes from "./routes/users.js";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
 import { error } from "console";
-import register from './controllers/auth.js';
+import { register } from './controllers/auth.js';
 import { createPost} from "./controllers/posts.js";
 import { verifyToken } from "./middleware/auth.js";
 import User from "./models/User.js";
 import Post from "./models/Post.js";
-import { users, posts } from "./controllers/data/index.js";
+import { users, posts } from "./data/index.js";
 
 // CONFIGURATIONS
 const __filename = fileURLToPath(import.meta.url);
@@ -40,7 +40,7 @@ const storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname)
-    }
+    },
 });
 const upload = multer({ storage }); 
 
