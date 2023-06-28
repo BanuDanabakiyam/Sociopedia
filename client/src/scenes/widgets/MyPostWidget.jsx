@@ -168,6 +168,6 @@ import {
         </FlexBetween>
       </WidgetWrapper>
     );
-  };
+  }
   
   export default MyPostWidget; 
