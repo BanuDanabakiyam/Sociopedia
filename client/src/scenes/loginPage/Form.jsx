@@ -51,7 +51,7 @@ const Form = () => {
    const [pageType, setPageType] = useState("login");
    const { palette } = useTheme();
    const dispatch = useDispatch();
-   const naviagate = useNavigate();
+   const navigate = useNavigate();
    const isNonMobile = useMediaQuery("(min-width:600px)");
    const isLogin = pageType === "login";
    const isRegister = pageType === "register";
@@ -96,7 +96,7 @@ const Form = () => {
                 token: loggedIn.token,
             })
         );
-        naviagate("/home");
+        navigate("/home");
     }
    };
 
@@ -134,7 +134,7 @@ const Form = () => {
                         <>
                         <TextField
                         label = "First Name"
-                        unBlur = {handleBlur}
+                        onBlur = {handleBlur}
                         onChange={handleChange}
                         value={values.firstName}
                         name="firstName"
@@ -144,7 +144,7 @@ const Form = () => {
                         />
                         <TextField
                         label = "Last Name"
-                        unBlur = {handleBlur}
+                        onBlur = {handleBlur}
                         onChange={handleChange}
                         value={values.lastName}
                         name="lastName"
@@ -154,7 +154,7 @@ const Form = () => {
                         />
                         <TextField
                         label = "Location"
-                        unBlur = {handleBlur}
+                        onBlur = {handleBlur}
                         onChange={handleChange}
                         value={values.location}
                         name="location"
@@ -164,7 +164,7 @@ const Form = () => {
                         />
                         <TextField
                         label = "Occupation"
-                        unBlur = {handleBlur}
+                        onBlur = {handleBlur}
                         onChange={handleChange}
                         value={values.occupation}
                         name="occupation"
@@ -185,9 +185,9 @@ const Form = () => {
                         setFieldValue("picture",acceptedFiles[0])
                         }
                         >
-                            {({ getRootprops, getInputProps }) => (
+                            {({ getRootProps, getInputProps }) => (
                                 <Box
-                                {...getRootprops()}
+                                {...getRootProps()}
                                 border={`2px dashed ${palette.primary.main}`}
                                 p="1rem"
                                 sx={{ "&:hover" : { cursor: "pointer "}}}
@@ -211,7 +211,7 @@ const Form = () => {
 
                         <TextField
                         label = "Email"
-                        unBlur = {handleBlur}
+                        onBlur = {handleBlur}
                         onChange={handleChange}
                         value={values.email}
                         name="email"
@@ -222,7 +222,7 @@ const Form = () => {
                         <TextField
                         label = "Password"
                         type="password"
-                        unBlur = {handleBlur}
+                        onBlur = {handleBlur}
                         onChange={handleChange}
                         value={values.password}
                         name="password"
