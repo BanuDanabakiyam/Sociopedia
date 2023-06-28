@@ -15,7 +15,14 @@ import User from "../models/User.js";
         location,
         occupation,
      } = req.body;
-
+      console.log("Register 1" ,firstName,
+      lastName,
+      email,
+      password,
+      picturePath,
+      friends,
+      location,
+      occupation)
      const salt = await bcrypt.genSalt();
      const passwordHash = await bcrypt.hash(password, salt);
 
@@ -46,10 +53,13 @@ import User from "../models/User.js";
 export const login = async (req, res) => {
     try{
         const { email, password } = req.body;
+        console.log("Inside Login", email,password);
         const user = await User.findOne({ email: email});
+        console.log("User", user);
         if(!user) return res.status(400).json({ msg: "user does not exist. "});
 
         const isMatch = await bcrypt.compare(password, user.password);
+        console.log("Password match: " , isMatch);
         if(!isMatch) return res.status(400).json({ msg: "Invalid Credentials. "});
 
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
@@ -58,4 +68,5 @@ export const login = async (req, res) => {
     }catch (err) {
         res.status(500).json({ error: err.message });
     }
+
     };    
