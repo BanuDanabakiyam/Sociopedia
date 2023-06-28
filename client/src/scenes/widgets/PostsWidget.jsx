@@ -61,7 +61,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
          comments={comments}
             />
         )
-    )}
+    )};
     </>
    );
 };
