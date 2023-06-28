@@ -25,5 +25,5 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     const data = await response.json();
     dispatch(setPosts({ posts: data}));
    };
-}
+};
 export default PostsWidget;
