@@ -40,6 +40,7 @@ const PostWidget = ({
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
+        "Accept": "application/json",
       },
       body: JSON.stringify({ userId: loggedInUserId }),
     });
@@ -92,8 +93,10 @@ const PostWidget = ({
           <ShareOutlined />
         </IconButton>
       </FlexBetween>
-      {isComments && (
+      {isComments && 
+      (
         <Box mt="0.5rem">
+          {console.log("comments", comments)}
           {comments.map((comment, i) => (
             <Box key={`${name}-${i}`}>
               <Divider />
