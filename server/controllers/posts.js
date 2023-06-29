@@ -18,7 +18,7 @@ export const createPost = async (req, res) => {
             picturePath,
             likes: {},
             Comments: []
-        })
+        });
         await newPost.save();
 
         const post = await Post.find();
@@ -34,14 +34,15 @@ export const getFeedPosts = async (req, res) => {
     try{
         const post = await Post.find();
 
-        res.status(201).json(post);
+        res.status(200).json(post);
   
     }catch (err) {
-        res.status(409).json({ message: err.message}) 
+        res.status(404).json({ message: err.message}) 
     }
 }
 
 export const getUserPosts = async (req, res) => {
+    console.log("Inside1");
     try {
         const { userId } = req.params;
         const post = await Post.find({ userId });
